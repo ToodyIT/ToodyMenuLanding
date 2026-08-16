@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/png" href="/logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#07080a" />
+        <script>
+            (function () {
+                try {
+                    var saved = localStorage.getItem('toody-theme');
+                    var theme =
+                        saved === 'light' || saved === 'dark'
+                            ? saved
+                            : window.matchMedia('(prefers-color-scheme: light)').matches
+                              ? 'light'
+                              : 'dark';
+                    document.documentElement.dataset.theme = theme;
+                    document.documentElement.style.colorScheme = theme;
+                    var meta = document.querySelector('meta[name="theme-color"]');
+                    if (meta) meta.setAttribute('content', theme === 'light' ? '#f6f7f9' : '#07080a');
+                } catch (e) {}
+            })();
+        </script>
+        <title>ToodyMenu — цифровое меню для ресторанов, кафе и кальянных</title>
+        <meta
+            name="description"
+            content="Цифровое меню по подписке: QR на столах или iPad, которые мы ставим сами. Заказы в Telegram и на админ-планшет. Ничего покупать не нужно."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://toodymenu.com" />
+        <meta property="og:title" content="ToodyMenu — цифровое меню для заведений" />
+        <meta
+            property="og:description"
+            content="Электронное меню по подписке для ресторанов, кафе, баров и кальянных. Заказ со стола, сессии, вызовы персонала и Telegram."
+        />
+        <meta property="og:image" content="https://toodymenu.com/logo.png" />
+        <meta name="twitter:card" content="summary" />
+        <link rel="canonical" href="https://toodymenu.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
+</html>
